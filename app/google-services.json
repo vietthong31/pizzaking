@@ -1,0 +1,156 @@
+{
+  "project_info": {
+    "project_number": "1057735325662",
+    "firebase_url": "https://food-order-online-1db48-default-rtdb.firebaseio.com",
+    "project_id": "food-order-online-1db48",
+    "storage_bucket": "food-order-online-1db48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057735325662:android:49b0a1b529846b57b30f4f",
+        "android_client_info": {
+          "package_name": "com.example.doantonghiep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvwVBXQZ1Detnc0OkzGiJ9MhRn12-fTds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057735325662:android:4a6e1829f8277e02b30f4f",
+        "android_client_info": {
+          "package_name": "com.example.doantonghiep.example.project.Activity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvwVBXQZ1Detnc0OkzGiJ9MhRn12-fTds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057735325662:android:32182d60fc675b5fb30f4f",
+        "android_client_info": {
+          "package_name": "com.example.foodapponline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvwVBXQZ1Detnc0OkzGiJ9MhRn12-fTds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057735325662:android:7618a15324065f3db30f4f",
+        "android_client_info": {
+          "package_name": "com.example.fooddelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvwVBXQZ1Detnc0OkzGiJ9MhRn12-fTds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057735325662:android:972955ddb92b4f32b30f4f",
+        "android_client_info": {
+          "package_name": "com.example.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvwVBXQZ1Detnc0OkzGiJ9MhRn12-fTds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057735325662-ro1am37u9oia2sa9e4lf8ahq6gtjnfsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
