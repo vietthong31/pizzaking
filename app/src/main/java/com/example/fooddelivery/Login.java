@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         anhxa();
 
         register.setOnClickListener(this);
+        btnSignin.setOnClickListener(this);
     }
 
     @Override
@@ -73,7 +74,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             return;
         }
 
-        progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

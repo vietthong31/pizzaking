@@ -3,6 +3,7 @@ package com.example.fooddelivery;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -53,40 +54,41 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
         if(full_name.isEmpty()){
             editTextName.setError("Full name is required");
-            editTextName.findFocus();
+            editTextName.requestFocus();
             return;
         }
 
         if(email.isEmpty()){
             editTextEmail.setError("Email is required");
-            editTextEmail.findFocus();
+            editTextEmail.requestFocus();
             return;
         }
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             editTextEmail.setError("Please provide valid email!!!");
-            editTextEmail.findFocus();
+            editTextEmail.requestFocus();
             return;
         }
 
         if(phone.isEmpty()){
             editPhone.setError("Phone is required");
-            editPhone.findFocus();
+            editPhone.requestFocus();
             return;
         }
 
         if(pass.isEmpty()){
             editTextPass.setError("Full name is required");
-            editTextPass.findFocus();
+            editTextPass.requestFocus();
             return;
         }
 
         if(pass.length() < 10){
             editTextPass.setError("Min password lenght should be 10 characters!");
-            editTextPass.findFocus();
+            editTextPass.requestFocus();
             return;
         }
 
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(
                 new OnCompleteListener<AuthResult>() {
                     @Override
@@ -101,10 +103,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                                         public void onCanceled() {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(Register.this, "Successfully", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(Register.this, Login.class));
+
                                                 progressBar.setVisibility(View.VISIBLE);
                                             }else{
                                                 Toast.makeText(Register.this, "Fail", Toast.LENGTH_SHORT).show();                                                progressBar.setVisibility(View.VISIBLE);
-                                                progressBar.setVisibility(View.VISIBLE);
+                                                progressBar.setVisibility(View.GONE);
                                             }
                                         }
                                     });
