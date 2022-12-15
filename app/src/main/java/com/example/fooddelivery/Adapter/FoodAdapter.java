@@ -1,5 +1,6 @@
 package com.example.fooddelivery.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,54 +12,52 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.Model.Food;
 import com.example.fooddelivery.R;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class FoodAdapter extends FirebaseRecyclerAdapter<Food,FoodAdapter.foodViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    public FoodAdapter(@NonNull FirebaseRecyclerOptions<Food> options) {
-        super(options);
-    }
+    private Context context;
+    private ArrayList<Food> mListFood;
 
-    @Override
-    protected void onBindViewHolder(@NonNull foodViewHolder holder, int position, @NonNull Food model) {
-        holder.textFoodName.setText(model.getFoodName());
-        holder.textPrice.setText(model.getPrice());
-
-        Glide.with(holder.img.getContext())
-                .load(model.getImgUrl())
-                .placeholder(com.firebase.ui.storage.R.drawable.common_google_signin_btn_icon_dark)
-                .circleCrop()
-                .error(com.firebase.ui.storage.R.drawable.common_google_signin_btn_icon_dark_normal)
-                .into(holder.img);
+    public FoodAdapter(Context context, ArrayList<Food> mListFood) {
+        this.context = context;
+        this.mListFood = mListFood;
     }
 
     @NonNull
     @Override
-    public foodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FoodAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_food, parent, false);
-        return new foodViewHolder(v);
+        return new ViewHolder(v);
     }
 
-    class  foodViewHolder extends RecyclerView.ViewHolder{
+    @Override
+    public void onBindViewHolder(@NonNull FoodAdapter.ViewHolder holder, int position) {
+        holder.textFoodName.setText(mListFood.get(position).getFoodName());
+        Glide.with(context)
+                .load(mListFood.get(position).getImgUrl())
+                .into(holder.img);
+        holder.textPrice.setText(mListFood.get(position).getPrice());
 
+    }
+
+    @Override
+    public int getItemCount() {
+        return mListFood.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView img;
         TextView textFoodName, textPrice;
-
-        public foodViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             img = (CircleImageView) itemView.findViewById(R.id.Img);
             textFoodName = (TextView) itemView.findViewById(R.id.FoodName);
             textPrice = (TextView) itemView.findViewById(R.id.Price);
+
         }
     }
 }
