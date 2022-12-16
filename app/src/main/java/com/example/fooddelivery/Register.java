@@ -12,13 +12,18 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.fooddelivery.Model.User;
+import com.example.fooddelivery.databinding.ActivityLoginBinding;
+import com.example.fooddelivery.databinding.ActivityRegisterBinding;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
@@ -26,11 +31,18 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     private EditText editTextName, editTextEmail, editTextPass, editPhone;
     private ProgressBar progressBar;
     private Button btnRegister;
+    private ActivityRegisterBinding binding;
+    private FirebaseStorage storage = FirebaseStorage.getInstance("gs://fooddelivery-f3ed3.appspot.com");
+    private StorageReference reference = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        StorageReference logoReference = reference.child("images/logo.png");
+        Glide.with(this).load(logoReference).into(binding.imagePizza);
+
         anhxa();
         mAuth = FirebaseAuth.getInstance();
 

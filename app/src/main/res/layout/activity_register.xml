@@ -29,8 +29,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:hint="Họ tên"
-            app:counterEnabled="true"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
             app:counterMaxLength="20"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,6 +43,8 @@
                 android:id="@+id/inputFullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Họ tên"
+                android:inputType="textPersonName"
                 android:maxLength="20" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,9 +54,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
-            android:hint="Email"
+            android:layout_marginTop="20dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +68,9 @@
             <EditText
                 android:id="@+id/inputEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -70,10 +79,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:hint="Phone"
-            app:counterEnabled="true"
+            android:layout_marginTop="20dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
             app:counterMaxLength="20"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +95,8 @@
                 android:id="@+id/inputPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Số điện thoại"
+                android:inputType="phone"
                 android:maxLength="20" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,9 +106,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
-            android:hint="Password"
+            android:layout_marginTop="20dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
             app:endIconMode="password_toggle"
@@ -107,6 +123,8 @@
                 android:id="@+id/inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
                 android:maxLength="20" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,9 +133,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:text="Đăng Ký" />
+            android:backgroundTint="@color/darkBrown"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Đăng Ký"
+            android:fontFamily="@font/inter"
+            android:textFontWeight="700"
+            android:textSize="20sp"
+            app:cornerRadius="24dp" />
 
     </LinearLayout>
 

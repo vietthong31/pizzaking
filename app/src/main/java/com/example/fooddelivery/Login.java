@@ -13,10 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.fooddelivery.databinding.ActivityLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
     private EditText editTextEmail, editTextPass;
@@ -24,14 +28,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private TextView forgot, register;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    private ActivityLoginBinding binding;
+    private FirebaseStorage storage = FirebaseStorage.getInstance("gs://fooddelivery-f3ed3.appspot.com");
+    private StorageReference reference = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        StorageReference logoReference = reference.child("images/logo.png");
+        Glide.with(this).load(logoReference).into(binding.imagePizza);
+
         mAuth = FirebaseAuth.getInstance();
         anhxa();
-
         register.setOnClickListener(this);
         btnSignin.setOnClickListener(this);
     }
