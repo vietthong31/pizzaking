@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Họ tên"
                 android:inputType="textPersonName"
-                android:maxLength="20" />
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

@@ -36,10 +36,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull FoodAdapter.ViewHolder holder, int position) {
-        holder.textFoodName.setText(mListFood.get(position).getFoodName());
+        Food f = mListFood.get(position);
         Glide.with(context)
                 .load(mListFood.get(position).getImgUrl())
                 .into(holder.img);
+
+        holder.textFoodName.setText(mListFood.get(position).getFoodName());
         holder.textPrice.setText(mListFood.get(position).getPrice());
 
     }

@@ -30,8 +30,11 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         anhxa();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
 
         mListFood = new ArrayList<>();
+
+        clearAll();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Food");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -54,7 +57,7 @@ public class Home extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Home.this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Home.this, "Error :" +error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -62,6 +65,13 @@ public class Home extends AppCompatActivity {
     }
 
     private void clearAll() {
+        if(mListFood != null){
+            mListFood.clear();
+            if(foodAdapter != null){
+                foodAdapter.notifyDataSetChanged();
+            }
+        }
+        mListFood = new ArrayList<>();
     }
 
 

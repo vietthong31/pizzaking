@@ -1,8 +1,5 @@
 package com.example.fooddelivery;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -13,14 +10,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.fooddelivery.databinding.ActivityLoginBinding;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
     private EditText editTextEmail, editTextPass;
@@ -28,20 +24,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private TextView forgot, register;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
-    private ActivityLoginBinding binding;
-    private FirebaseStorage storage = FirebaseStorage.getInstance("gs://fooddelivery-f3ed3.appspot.com");
-    private StorageReference reference = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        StorageReference logoReference = reference.child("images/logo.png");
-        Glide.with(this).load(logoReference).into(binding.imagePizza);
-
+        setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         anhxa();
+
         register.setOnClickListener(this);
         btnSignin.setOnClickListener(this);
     }
@@ -84,15 +74,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             return;
         }
 
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //redirect to user profile
+                    progressBar.setVisibility(View.VISIBLE);
                     startActivity(new Intent(Login.this, Home.class));
                 }else{
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(Login.this, "Đăng nhập thất bại, vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
                 }
             }
