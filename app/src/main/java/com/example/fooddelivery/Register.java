@@ -2,6 +2,7 @@ package com.example.fooddelivery;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
@@ -77,42 +79,33 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         }
 
         if(pass.isEmpty()){
-            editTextPass.setError("Full name is required");
+            editTextPass.setError("Password is required");
             editTextPass.requestFocus();
             return;
         }
 
         if(pass.length() < 10){
-            editTextPass.setError("Min password lenght should be 10 characters!");
+            editTextPass.setError("Min password length should be 10 characters!");
             editTextPass.requestFocus();
             return;
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(
-                new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user = new User(full_name, email, phone);
+                            //User user = new User(full_name, email, phone);
 
-                            FirebaseDatabase.getInstance().getReference("users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCanceledListener(new OnCanceledListener() {
-                                        @Override
-                                        public void onCanceled() {
-                                            if(task.isSuccessful()){
-                                                Toast.makeText(Register.this, "Successfully", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(Register.this, Login.class));
+                            Log.d("SIGN UP", "success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(Register.this, "Successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Register.this, Login.class));
 
-                                                progressBar.setVisibility(View.VISIBLE);
-                                            }else{
-                                                Toast.makeText(Register.this, "Fail", Toast.LENGTH_SHORT).show();                                                progressBar.setVisibility(View.VISIBLE);
-                                                progressBar.setVisibility(View.GONE);
-                                            }
-                                        }
-                                    });
+                            progressBar.setVisibility(View.GONE);
+
                         }else{
+                            Log.d("SIGN UP", "fail", task.getException());
                             Toast.makeText(Register.this, "Fail to register! Try again", Toast.LENGTH_SHORT).show();                                                progressBar.setVisibility(View.VISIBLE);
                             progressBar.setVisibility(View.GONE);
                         }
