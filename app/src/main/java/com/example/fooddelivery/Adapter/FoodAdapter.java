@@ -39,10 +39,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         Food f = mListFood.get(position);
         Glide.with(context)
                 .load(mListFood.get(position).getImgUrl())
+                .placeholder(com.firebase.ui.storage.R.drawable.common_google_signin_btn_icon_dark)
+                .error(R.drawable.error)
                 .into(holder.img);
 
-        holder.textFoodName.setText(mListFood.get(position).getFoodName());
-        holder.textPrice.setText(mListFood.get(position).getPrice());
+//        holder.textFoodName.setText(f.getFoodName());
+//        holder.textPrice.setText(f.getPrice());
 
     }
 

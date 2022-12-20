@@ -34,6 +34,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         register.setOnClickListener(this);
         btnSignin.setOnClickListener(this);
+        forgot.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +45,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.btnSignin:
                 Signin();
+                break;
+            case R.id.forgot:
+                startActivity(new Intent(this, ForgotPassword.class));
                 break;
         }
     }
@@ -74,14 +78,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             return;
         }
 
-        progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //redirect to user profile
-                    progressBar.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
                     startActivity(new Intent(Login.this, Home.class));
                 }else{
                     progressBar.setVisibility(View.GONE);
