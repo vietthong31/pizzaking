@@ -15,11 +15,21 @@ import com.example.fooddelivery.databinding.FragmentNotificationsBinding;
 public class UserFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
+//    private Button btnLogout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         UserViewModel userViewModel =
                 new ViewModelProvider(this).get(UserViewModel.class);
+
+//        btnLogout = binding.btnLogout;
+//        btnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FirebaseAuth.getInstance().signOut();
+//                startActivity(new Intent());
+//            }
+//        });
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

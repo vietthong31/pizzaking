@@ -1,4 +1,4 @@
-package com.example.fooddelivery;
+package com.example.fooddelivery.Activity;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddelivery.Adapter.FoodAdapter;
 import com.example.fooddelivery.Model.Food;
+import com.example.fooddelivery.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,9 +44,9 @@ public class Home extends AppCompatActivity {
 
                 clearAll();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Food food = new Food();
-                    food.setFoodName(snapshot.getValue().toString());
-                    food.setImgUrl(snapshot.getValue().toString());
+                    Food food = snapshot.getValue(Food.class);
+//                    food.setFoodName(snapshot.getValue().toString());
+//                    food.setImgUrl(snapshot.getValue().toString());
                     //food.setPrice(snapshot.getValue().toString());
 
                     mListFood.add(food);

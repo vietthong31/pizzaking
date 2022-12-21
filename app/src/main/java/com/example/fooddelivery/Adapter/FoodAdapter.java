@@ -1,17 +1,18 @@
 package com.example.fooddelivery.Adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.fooddelivery.GlideApp;
+import com.example.fooddelivery.Activity.Food_Detail;
 import com.example.fooddelivery.Model.Food;
 import com.example.fooddelivery.R;
 import com.google.firebase.storage.FirebaseStorage;
@@ -44,6 +45,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull FoodAdapter.ViewHolder holder, int position) {
         Food f = mListFood.get(position);
+
         Glide.with(context)
                 .load(mListFood.get(position).getImgUrl())
                 .placeholder(com.firebase.ui.storage.R.drawable.common_google_signin_btn_icon_dark)
@@ -54,6 +56,18 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         holder.textFoodName.setText(f.getFoodName());
         holder.textPrice.setText(f.getPrice().toString());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, f.getFoodName(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(context, Food_Detail.class);
+                i.putExtra("FoodName", f.getFoodName());
+                i.putExtra("Price", f.getPrice());
+                i.putExtra("Img", f.getImgUrl());
+                context.startActivity(i);
+
+            }
+        });
     }
 
     @Override
@@ -69,7 +83,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             img = (CircleImageView) itemView.findViewById(R.id.Img);
             textFoodName = (TextView) itemView.findViewById(R.id.FoodName);
             textPrice = (TextView) itemView.findViewById(R.id.Price);
-
         }
     }
 }

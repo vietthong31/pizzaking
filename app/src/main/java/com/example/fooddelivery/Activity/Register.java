@@ -1,4 +1,4 @@
-package com.example.fooddelivery;
+package com.example.fooddelivery.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,14 +13,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fooddelivery.Model.User;
-import com.google.android.gms.tasks.OnCanceledListener;
+import com.example.fooddelivery.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
 

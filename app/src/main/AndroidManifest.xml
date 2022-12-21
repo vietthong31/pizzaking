@@ -24,28 +24,35 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ForgotPassword"
+            android:name=".Food_Detail"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Home"
+            android:name=".Activity.ForgotPassword"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Register"
+            android:name=".Activity.Home"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Login"
+            android:name=".Activity.Register"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activity.Login"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

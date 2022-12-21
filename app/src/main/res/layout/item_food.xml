@@ -5,11 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="6dp"
     android:elevation="6dp"
+    android:id="@+id/card"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:padding="15dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -43,6 +45,18 @@
             android:text="790000"
             android:textSize="20dp"
             android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAdd_Pro"
+            android:backgroundTint="@color/darkBrown"
+            android:text="Thêm vào giỏ hàng"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/Img"
+            android:layout_below="@+id/Price"
+            />
 
     </RelativeLayout>
 
