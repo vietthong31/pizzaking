@@ -1,6 +1,7 @@
 package com.example.fooddelivery.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.fooddelivery.GlideApp;
 import com.example.fooddelivery.Model.Food;
 import com.example.fooddelivery.R;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -21,6 +25,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<Food> mListFood;
+    private FirebaseStorage storage = FirebaseStorage.getInstance("gs://fooddelivery-f3ed3.appspot.com");
+    private StorageReference reference = storage.getReference();
+    StorageReference logoReference = reference.child("images/logo.png");
 
     public FoodAdapter(Context context, ArrayList<Food> mListFood) {
         this.context = context;
@@ -42,9 +49,10 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 .placeholder(com.firebase.ui.storage.R.drawable.common_google_signin_btn_icon_dark)
                 .error(R.drawable.error)
                 .into(holder.img);
+        //GlideApp.with(context).load(logoReference).into(holder.img);
 
-//        holder.textFoodName.setText(f.getFoodName());
-//        holder.textPrice.setText(f.getPrice());
+        holder.textFoodName.setText(f.getFoodName());
+        holder.textPrice.setText(f.getPrice().toString());
 
     }
 

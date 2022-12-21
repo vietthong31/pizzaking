@@ -4,12 +4,12 @@ public class Food {
 
     private String FoodName;
     private String ImgUrl;
-    private String Price;
+    private Long Price;
 
 
     public Food(){}
 
-    public Food(String foodName, String imgUrl, String price) {
+    public Food(String foodName, String imgUrl, Long price) {
         FoodName = foodName;
         ImgUrl = imgUrl;
         Price = price;
@@ -31,11 +31,11 @@ public class Food {
         ImgUrl = imgUrl;
     }
 
-    public String getPrice() {
+    public Long getPrice() {
         return Price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Long price) {
         Price = price;
     }
 }

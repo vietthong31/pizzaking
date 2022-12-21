@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PizzaKing - Food Delivery</string>
+    <string name="title_activity_test">Test</string>
+    <string name="title_home">Home</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_user">User</string>
 </resources>

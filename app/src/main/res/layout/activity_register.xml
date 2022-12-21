@@ -8,6 +8,7 @@
 
     <ImageView
         android:id="@+id/imagePizza"
+        android:src="@drawable/logo"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_marginLeft="80dp"

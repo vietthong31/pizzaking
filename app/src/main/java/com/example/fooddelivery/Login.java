@@ -86,7 +86,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 if(task.isSuccessful()){
                     //redirect to user profile
                     progressBar.setVisibility(View.GONE);
-                    startActivity(new Intent(Login.this, Home.class));
+                    startActivity(new Intent(Login.this, App.class));
                 }else{
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(Login.this, "Đăng nhập thất bại, vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
