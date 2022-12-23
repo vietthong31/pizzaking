@@ -13,12 +13,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fooddelivery.Model.User;
 import com.example.fooddelivery.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
@@ -93,10 +94,21 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            //User user = new User(full_name, email, phone);
+                            User user = new User(full_name, email, phone, "");
 
-                            Log.d("SIGN UP", "success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseDatabase.getInstance().getReference("users")
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+                                                progressBar.setVisibility(View.GONE);
+                                            }
+                                        }
+                                    });
+
+//                            Log.d("SIGN UP", "success");
+//                            FirebaseUser users = mAuth.getCurrentUser();
                             Toast.makeText(Register.this, "Successfully", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Register.this, Login.class));
 

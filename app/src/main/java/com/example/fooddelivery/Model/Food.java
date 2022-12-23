@@ -5,14 +5,16 @@ public class Food {
     private String FoodName;
     private String ImgUrl;
     private Long Price;
+    private String Description;
 
 
     public Food(){}
 
-    public Food(String foodName, String imgUrl, Long price) {
+    public Food(String foodName, String imgUrl, Long price, String Description) {
         FoodName = foodName;
         ImgUrl = imgUrl;
         Price = price;
+        Description = Description;
     }
 
     public String getFoodName() {
@@ -37,5 +39,13 @@ public class Food {
 
     public void setPrice(Long price) {
         Price = price;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
     }
 }

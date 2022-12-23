@@ -30,6 +30,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private StorageReference reference = storage.getReference();
     StorageReference logoReference = reference.child("images/logo.png");
 
+
     public FoodAdapter(Context context, ArrayList<Food> mListFood) {
         this.context = context;
         this.mListFood = mListFood;
@@ -62,10 +63,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 Toast.makeText(context, f.getFoodName(), Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(context, Food_Detail.class);
                 i.putExtra("FoodName", f.getFoodName());
-                i.putExtra("Price", f.getPrice());
+                i.putExtra("Price", f.getPrice().toString());
                 i.putExtra("Img", f.getImgUrl());
                 context.startActivity(i);
-
             }
         });
     }
@@ -77,12 +77,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView img;
-        TextView textFoodName, textPrice;
+        TextView textFoodName, textPrice, txtDes;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img = (CircleImageView) itemView.findViewById(R.id.Img);
             textFoodName = (TextView) itemView.findViewById(R.id.FoodName);
             textPrice = (TextView) itemView.findViewById(R.id.Price);
+            txtDes = (TextView) itemView.findViewById(R.id.descriptionTxt);
         }
     }
 }

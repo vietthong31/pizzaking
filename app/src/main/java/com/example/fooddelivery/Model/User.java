@@ -1,14 +1,15 @@
 package com.example.fooddelivery.Model;
 
 public class User {
-    public String name, email, phone;
+    public String name, email, phone, address;
 
     public User(){}
 
-    public User(String name, String email, String phone) {
+    public User(String name, String email, String phone, String address) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.address = "";
     }
 
     public String getName() {
@@ -33,5 +34,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
