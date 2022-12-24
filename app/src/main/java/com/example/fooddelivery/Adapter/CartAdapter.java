@@ -3,7 +3,6 @@ package com.example.fooddelivery.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,8 +40,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 //                .error(R.drawable.error)
 //                .into(holder.imgCart);
 
-        holder.fNameCart.setText(cart.getfNameCart());
-        holder.priceCart.setText(cart.getPriceCart().toString());
+        holder.date.setText(mListCart.get(position).getCurrentDate());
+        holder.time.setText(mListCart.get(position).GetCurrentTime());
+        holder.fNameCart.setText(mListCart.get(position).getfNameCart());
+        holder.priceCart.setText(mListCart.get(position).getfPriceCart());
+        holder.totalPrice.setText(String.valueOf(mListCart.get(position).getTotalPrice()));
+        holder.totalQuantity.setText(mListCart.get(position).getTotalQuantity());
 
     }
 
@@ -52,14 +55,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgCart;
-        TextView fNameCart, priceCart;
+        TextView date, time, fNameCart, priceCart, totalQuantity, totalPrice;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgCart = itemView.findViewById(R.id.Img);
+            date = itemView.findViewById(R.id.date);
+            time = itemView.findViewById(R.id.time);
             fNameCart = itemView.findViewById(R.id.FoodName);
             priceCart = itemView.findViewById(R.id.Price);
+            totalPrice = itemView.findViewById(R.id.total_price);
+            totalQuantity = itemView.findViewById(R.id.total_quantity);
         }
     }
 }

@@ -1,16 +1,38 @@
 package com.example.fooddelivery.Model;
 
 public class Cart {
+    String currentDate;
+    String CurrentTime;
     String fNameCart;
-    String imgCart;
-    Long priceCart;
+    String fPriceCart;
+    String totalQuantity;
+    Long totalPrice;
 
     public Cart(){}
 
-    public Cart(String fNameCart, String imgCart, Long priceCart) {
+    public Cart(String currentDate, String CurrentTime, String fNameCart, String fPriceCart, String totalQuantity, Long totalPrice) {
+        this.currentDate = currentDate;
+        this.CurrentTime = CurrentTime;
         this.fNameCart = fNameCart;
-        this.imgCart = imgCart;
-        this.priceCart = priceCart;
+        this.fPriceCart = fPriceCart;
+        this.totalQuantity = totalQuantity;
+        this.totalPrice = totalPrice;
+    }
+
+    public String getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(String currentDate) {
+        this.currentDate = currentDate;
+    }
+
+    public String GetCurrentTime() {
+        return CurrentTime;
+    }
+
+    public void setGetCurrentTime(String getCurrentTime) {
+        this.CurrentTime = getCurrentTime;
     }
 
     public String getfNameCart() {
@@ -21,19 +43,27 @@ public class Cart {
         this.fNameCart = fNameCart;
     }
 
-    public String getImgCart() {
-        return imgCart;
+    public String getfPriceCart() {
+        return fPriceCart;
     }
 
-    public void setImgCart(String imgCart) {
-        this.imgCart = imgCart;
+    public void setfPriceCart(String fPriceCart) {
+        this.fPriceCart = fPriceCart;
     }
 
-    public Long getPriceCart() {
-        return priceCart;
+    public String getTotalQuantity() {
+        return totalQuantity;
     }
 
-    public void setPriceCart(Long priceCart) {
-        this.priceCart = priceCart;
+    public void setTotalQuantity(String totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public Long getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Long totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

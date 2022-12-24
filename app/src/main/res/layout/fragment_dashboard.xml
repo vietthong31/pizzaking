@@ -38,7 +38,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_goneMarginTop="10dp"/>
+        app:layout_goneMarginTop="10dp"
+        tools:listitem="@layout/cart_item"/>
 
     <TextView
         android:layout_width="wrap_content"
