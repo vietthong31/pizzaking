@@ -9,11 +9,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.databinding.ActivityFoodDetailBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 
 public class Food_Detail extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +31,11 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
     ImageView btnPlus, btnMinus;
     Button addToCartBtn;
     int Quantity = 1;
+    int basePrice;
+
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore firestore;
+
 
     ActivityFoodDetailBinding binding;
 
@@ -31,17 +46,20 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
         setContentView(binding.getRoot());
         anhxa();
 
+        firestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         Intent i = this.getIntent();
 
         if(i != null){
             String foodName = i.getStringExtra("FoodName");
             String foodPrice = i.getStringExtra("Price");
             String foodImg = i.getStringExtra("Img");
-//            String foodDes = i.getStringExtra("Des");
+            String foodDes = i.getStringExtra("Des");
+            basePrice = Integer.valueOf(foodPrice);
 
             binding.FoodName.setText(foodName);
             binding.Price.setText(foodPrice);
-//            binding.descriptionTxt.setText(foodDes);
+            binding.descriptionTxt.setText(foodDes);
 
             Glide.with(this)
                     .load(foodImg)
@@ -51,9 +69,11 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
         numberOrdertxt = binding.numberOrderTxt;
         btnMinus = binding.minusBtn;
         btnPlus = binding.plusBtn;
+        txt_FoodName = binding.FoodName;
 
         btnPlus.setOnClickListener(this);
         btnMinus.setOnClickListener(this);
+        addToCartBtn.setOnClickListener(this);
 
     }
 
@@ -76,27 +96,50 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
     private void AddtoCart() {
 //        Intent intent = new Intent(Food_Detail.this, CartFragment.class);
 //        startActivity(intent);
+
+        String saveCurrentTime, saveCurrentDate;
+
+        Calendar calForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MM,dd,yyyy");
+        saveCurrentDate = currentDate.format(calForDate.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH::mm::ss a");
+        saveCurrentTime = currentTime.format(calForDate.getTime());
+
+        final HashMap<String, Object> cartMap = new HashMap<>();
+        cartMap.put("FoodName",txt_FoodName.getText().toString());
+        cartMap.put("Price",txt_Price.getText().toString());
+        cartMap.put("TotalQuantity",numberOrdertxt.getText().toString());
+//        cartMap.put("TotalPrice", newPrice);
+        cartMap.put("CurrentTime", saveCurrentTime);
+        cartMap.put("CurrentDate", saveCurrentDate);
+
+        firestore.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
+                .collection("User").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        Toast.makeText(Food_Detail.this, "Added To A Cart", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
     }
 
     private void Minus() {
-        String price = txt_Price.getText().toString();
-        int basePrice = Integer.valueOf(price);
-        if(Quantity == 0){
+        if(Quantity == 1){
             Toast.makeText(this, "Cant decrease quantity < 0", Toast.LENGTH_SHORT).show();
         }else{
+            int newPrice = (basePrice * Quantity) - Integer.valueOf(basePrice); // chua giam duoc so tien
             Quantity--;
             displayQuantity();
-            int foodPrice = (basePrice * Quantity) - Integer.valueOf(price); // chua giam duoc so tien
-            String newPrice = String.valueOf(foodPrice);
-            txt_Price.setText(newPrice);
+            txt_Price.setText(String.valueOf(newPrice));
+
+            Log.d("Price Minus", String.valueOf(Quantity));
+            Log.d("Price Minus", String.valueOf(newPrice));
         }
-        Log.d("Price Minus", String.valueOf(Quantity));
-        Log.d("Price Minus", price);
+
     }
 
     private void Plus() {
-        String price = txt_Price.getText().toString();
-        int basePrice = Integer.valueOf(price);
         Quantity++;
         displayQuantity();
         int foodPrice = basePrice * Quantity;
@@ -104,7 +147,7 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
         txt_Price.setText(newPrice);
 
         Log.d("Price Plus", String.valueOf(Quantity));
-        Log.d("Price Plus", price);
+        Log.d("Price Plus", newPrice);
 
     }
 
@@ -115,6 +158,7 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
 
 
     private void anhxa(){
+//        txt_FoodName = findViewById(R.id.FoodName);
         txt_Price = findViewById(R.id.Price);
         addToCartBtn = findViewById(R.id.addToCartBtn);
     }

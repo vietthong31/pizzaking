@@ -64,6 +64,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
                 i.putExtra("FoodName", f.getFoodName());
                 i.putExtra("Price", f.getPrice().toString());
                 i.putExtra("Img", f.getImgUrl());
+                i.putExtra("Des", f.getDescription());
                 context.startActivity(i);
             }
         });
