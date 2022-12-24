@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.databinding.ActivityFoodDetailBinding;
-import com.example.fooddelivery.ui.cart.CartFragment;
 
 public class Food_Detail extends AppCompatActivity implements View.OnClickListener {
 
@@ -75,8 +74,8 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
     }
 
     private void AddtoCart() {
-        Intent intent = new Intent(Food_Detail.this, CartFragment.class);
-        startActivity(intent);
+//        Intent intent = new Intent(Food_Detail.this, CartFragment.class);
+//        startActivity(intent);
     }
 
     private void Minus() {

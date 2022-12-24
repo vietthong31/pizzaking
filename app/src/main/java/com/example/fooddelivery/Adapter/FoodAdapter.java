@@ -30,7 +30,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
     private StorageReference reference = storage.getReference();
     StorageReference logoReference = reference.child("images/logo.png");
 
-
     public FoodAdapter(Context context, ArrayList<Food> mListFood) {
         this.context = context;
         this.mListFood = mListFood;

@@ -7,27 +7,21 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.example.fooddelivery.Activity.Login;
 import com.example.fooddelivery.Activity.Register;
 import com.example.fooddelivery.databinding.ActivityMainBinding;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnSignin, btnSignup;
     private ActivityMainBinding binding;
-    private FirebaseStorage storage = FirebaseStorage.getInstance("gs://fooddelivery-f3ed3.appspot.com");
-    private StorageReference reference = storage.getReference();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        StorageReference logoReference = reference.child("images/logo.png");
-        Glide.with(this).load(logoReference).into(binding.logo);
 
         btnSignin = findViewById(R.id.btnSignin);
         btnSignup = findViewById(R.id.btnSignup);
