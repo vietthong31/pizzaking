@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnAdd_Pro"
             android:backgroundTint="@color/darkBrown"
-            android:text="Thêm vào giỏ hàng"
+            android:text="Chi tiết "
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/Img"

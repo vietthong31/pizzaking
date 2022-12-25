@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:padding="7dp"
-        android:background="#FB9FDE"
+        android:background="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -33,9 +33,10 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Current Date "
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
+                android:text="Current Date "
+                android:textColor="@color/darkBrown"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -61,7 +62,7 @@
                 android:layout_weight="1"
                 android:text="Current Time: "
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -87,7 +88,7 @@
                 android:layout_weight="1"
                 android:text="Food Name "
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -113,7 +114,7 @@
                 android:layout_weight="1"
                 android:text="Price"
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -139,7 +140,7 @@
                 android:layout_weight="1"
                 android:text="Total price "
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -165,7 +166,7 @@
                 android:layout_weight="1"
                 android:text="Total Quantity"
                 android:paddingLeft="10dp"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

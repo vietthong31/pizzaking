@@ -6,40 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <EditText
-        android:id="@+id/inputSearch"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/input_search"
-        android:drawableEnd="@drawable/ic_search"
-        android:hint="Search"
-        android:paddingStart="20dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="8dp" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/inputSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/input_search"
+            android:drawableRight="@drawable/ic_search"
+            android:hint="Search Food Here..."
+            android:paddingLeft="20dp"
+            android:paddingTop="8dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnFind"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/darkBrown"
+            android:fontFamily="@font/inter"
+            android:text="TÌM"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:cornerRadius="24dp" />
+
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/inputSearch"
-        android:layout_marginTop="30dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
-        android:background="@color/colorOrage"
-        android:src="@drawable/ic_shopping_cart" />
+        android:layout_below="@id/linearLayout"
+        android:layout_marginTop="15dp" />
 
 </RelativeLayout>

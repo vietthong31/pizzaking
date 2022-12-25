@@ -31,7 +31,7 @@
         app:layout_constraintWidth_percent=".6" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cart_rcv"
+        android:id="@+id/cartRcv"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="4dp"
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:text="Total"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cart_rcv"
+        app:layout_constraintTop_toBottomOf="@+id/cartRcv"
         app:layout_constraintVertical_bias="0.137" />
 
     <TextView
@@ -61,13 +61,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="48dp"
         android:text="79000"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cart_rcv"
+        app:layout_constraintTop_toBottomOf="@+id/cartRcv"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -78,7 +78,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="28dp"
         android:backgroundTint="@color/darkBrown"
-        android:text="Dat hang"
+        android:text="Đặt hàng"
         android:textFontWeight="700"
         android:textSize="20sp"
         app:cornerRadius="24dp"

@@ -1,16 +1,18 @@
 package com.example.fooddelivery.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddelivery.Model.Cart;
 import com.example.fooddelivery.R;
-import com.google.api.Context;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     Context context;
     ArrayList<Cart> mListCart;
+    long totalAmount = 0;
 
     public CartAdapter(Context context, ArrayList<Cart> mListCart) {
         this.context = context;
@@ -41,12 +44,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 //                .into(holder.imgCart);
 
         holder.date.setText(mListCart.get(position).getCurrentDate());
-        holder.time.setText(mListCart.get(position).GetCurrentTime());
-        holder.fNameCart.setText(mListCart.get(position).getfNameCart());
-        holder.priceCart.setText(mListCart.get(position).getfPriceCart());
+        holder.time.setText(mListCart.get(position).getCurrentTime());
+        holder.fNameCart.setText(mListCart.get(position).getFoodName());
+        holder.priceCart.setText(String.valueOf(mListCart.get(position).getTotalPrice()));
         holder.totalPrice.setText(String.valueOf(mListCart.get(position).getTotalPrice()));
         holder.totalQuantity.setText(mListCart.get(position).getTotalQuantity());
 
+        //Total Amount pass to CartFragment
+        totalAmount = totalAmount + mListCart.get(position).getTotalPrice();
+        Intent intent = new Intent("MyTotalAmount");
+        intent.putExtra("totalAmount", totalAmount);
+
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override
@@ -61,8 +70,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
             date = itemView.findViewById(R.id.date);
             time = itemView.findViewById(R.id.time);
-            fNameCart = itemView.findViewById(R.id.FoodName);
-            priceCart = itemView.findViewById(R.id.Price);
+            fNameCart = itemView.findViewById(R.id.food_name);
+            priceCart = itemView.findViewById(R.id.food_price);
             totalPrice = itemView.findViewById(R.id.total_price);
             totalQuantity = itemView.findViewById(R.id.total_quantity);
         }

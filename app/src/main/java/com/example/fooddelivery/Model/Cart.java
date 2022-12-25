@@ -1,69 +1,69 @@
 package com.example.fooddelivery.Model;
 
 public class Cart {
-    String currentDate;
+    String CurrentDate;
     String CurrentTime;
-    String fNameCart;
-    String fPriceCart;
-    String totalQuantity;
-    Long totalPrice;
+    String FoodName;
+    Long Price;
+    String TotalQuantity;
+    Long TotalPrice;
 
     public Cart(){}
 
-    public Cart(String currentDate, String CurrentTime, String fNameCart, String fPriceCart, String totalQuantity, Long totalPrice) {
-        this.currentDate = currentDate;
+    public Cart(String CurrentDate, String CurrentTime, String FoodName, Long Price, String TotalQuantity, Long TotalPrice) {
+        this.CurrentDate = CurrentDate;
         this.CurrentTime = CurrentTime;
-        this.fNameCart = fNameCart;
-        this.fPriceCart = fPriceCart;
-        this.totalQuantity = totalQuantity;
-        this.totalPrice = totalPrice;
+        this.FoodName = FoodName;
+        this.Price = Price;
+        this.TotalQuantity = TotalQuantity;
+        this.TotalPrice = TotalPrice;
     }
 
     public String getCurrentDate() {
-        return currentDate;
+        return CurrentDate;
     }
 
     public void setCurrentDate(String currentDate) {
-        this.currentDate = currentDate;
+        CurrentDate = currentDate;
     }
 
-    public String GetCurrentTime() {
+    public String getCurrentTime() {
         return CurrentTime;
     }
 
-    public void setGetCurrentTime(String getCurrentTime) {
-        this.CurrentTime = getCurrentTime;
+    public void setCurrentTime(String currentTime) {
+        CurrentTime = currentTime;
     }
 
-    public String getfNameCart() {
-        return fNameCart;
+    public String getFoodName() {
+        return FoodName;
     }
 
-    public void setfNameCart(String fNameCart) {
-        this.fNameCart = fNameCart;
+    public void setFoodName(String foodName) {
+        FoodName = foodName;
     }
 
-    public String getfPriceCart() {
-        return fPriceCart;
+    public Long getPrice() {
+        return Price;
     }
 
-    public void setfPriceCart(String fPriceCart) {
-        this.fPriceCart = fPriceCart;
+    public void setPrice(Long price) {
+        Price = price;
     }
 
     public String getTotalQuantity() {
-        return totalQuantity;
+        return TotalQuantity;
     }
 
     public void setTotalQuantity(String totalQuantity) {
-        this.totalQuantity = totalQuantity;
+        TotalQuantity = totalQuantity;
     }
 
     public Long getTotalPrice() {
-        return totalPrice;
+        return TotalPrice;
     }
 
-    public void setTotalPrice(Long totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalPrice(Long TotalPrice) {
+        this.TotalPrice = TotalPrice;
     }
 }

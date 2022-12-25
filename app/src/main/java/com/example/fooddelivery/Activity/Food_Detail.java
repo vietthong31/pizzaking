@@ -32,6 +32,7 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
     Button addToCartBtn;
     int Quantity = 1;
     int basePrice;
+    int totalPrice;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
@@ -108,9 +109,9 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
 
         final HashMap<String, Object> cartMap = new HashMap<>();
         cartMap.put("FoodName",txt_FoodName.getText().toString());
-        cartMap.put("Price",txt_Price.getText().toString());
+        cartMap.put("Price",basePrice);
         cartMap.put("TotalQuantity",numberOrdertxt.getText().toString());
-//        cartMap.put("TotalPrice", newPrice);
+        cartMap.put("TotalPrice", totalPrice);
         cartMap.put("CurrentTime", saveCurrentTime);
         cartMap.put("CurrentDate", saveCurrentDate);
 
@@ -132,7 +133,7 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
             Quantity--;
             displayQuantity();
             txt_Price.setText(String.valueOf(newPrice));
-
+            totalPrice = newPrice;
             Log.d("Price Minus", String.valueOf(Quantity));
             Log.d("Price Minus", String.valueOf(newPrice));
         }
@@ -145,7 +146,7 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
         int foodPrice = basePrice * Quantity;
         String newPrice = String.valueOf(foodPrice);
         txt_Price.setText(newPrice);
-
+        totalPrice = foodPrice;
         Log.d("Price Plus", String.valueOf(Quantity));
         Log.d("Price Plus", newPrice);
 
@@ -159,6 +160,7 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
 
     private void anhxa(){
 //        txt_FoodName = findViewById(R.id.FoodName);
+//        txt_Des = findViewById(R.id.Price);
         txt_Price = findViewById(R.id.Price);
         addToCartBtn = findViewById(R.id.addToCartBtn);
     }
