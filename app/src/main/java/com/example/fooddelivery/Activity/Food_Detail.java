@@ -57,6 +57,7 @@ public class Food_Detail extends AppCompatActivity implements View.OnClickListen
             String foodImg = i.getStringExtra("Img");
             String foodDes = i.getStringExtra("Des");
             basePrice = Integer.valueOf(foodPrice);
+            totalPrice = Integer.valueOf(foodPrice);
 
             binding.FoodName.setText(foodName);
             binding.Price.setText(foodPrice);

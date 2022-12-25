@@ -106,11 +106,12 @@ public class CartFragment extends Fragment {
         return root;
     }
 
+
     public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            int totalBill = intent.getIntExtra("totalAmount", 0);
+            long totalBill = intent.getLongExtra("totalAmount", 0);
             overAllMount.setText(totalBill + "Đ");
         }
     };

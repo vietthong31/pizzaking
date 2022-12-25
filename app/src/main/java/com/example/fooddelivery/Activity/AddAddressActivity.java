@@ -61,7 +61,7 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
             final_addres+=userName;
         }
         if(!userAddres.isEmpty()){
-            final_addres+=userAddres;
+            final_addres+=userAddres; // nhấn được rồi mà chưa vào database
         }
         if(!userCity.isEmpty()){
             final_addres+=userCity;
@@ -78,10 +78,10 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
             map.put("userAddress", final_addres);
 
             firestore.collection("CurrentUser").document(auth.getCurrentUser().getUid())
-                    .collection("Address").add(map).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentReference> task) {
-                            Toast.makeText(AddAddressActivity.this, "Address added", Toast.LENGTH_SHORT).show();
+                                    .collection("Address").add(map).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                            Toast.makeText(AddAddressActivity.this, "Address added", Toast.LENGTH_SHORT).show();
                         }
                     });
         }else {

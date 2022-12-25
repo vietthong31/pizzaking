@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ad_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ad_address"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -67,7 +67,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ad_city"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -87,7 +87,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ad_code"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -105,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ad_phone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
