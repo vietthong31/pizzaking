@@ -1,9 +1,6 @@
 package com.example.fooddelivery.ui.cart;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,8 +39,8 @@ public class CartFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseFirestore firestore;
     private FirebaseDatabase firebaseDatabase;
-        TextView overAllMount;
-    Long overAllTotalAmount;
+    TextView overAllMount;
+    long overAllTotalAmount;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -69,8 +65,8 @@ public class CartFragment extends Fragment {
         recyclerView.setAdapter(cartAdapter);
 
         //get data from carAdapter
-        LocalBroadcastManager.getInstance(getActivity())
-                        .registerReceiver(mMessageReceiver, new IntentFilter("MyTotalAmount"));
+//        LocalBroadcastManager.getInstance(getActivity())
+//                        .registerReceiver(mMessageReceiver, new IntentFilter("MyTotalAmount"));
 
         //get data from FirebaseStore
         firestore.collection("AddToCart").document(mAuth.getCurrentUser().getUid())
@@ -80,6 +76,9 @@ public class CartFragment extends Fragment {
                         if(task.isSuccessful()){
                             for (DocumentSnapshot doc : task.getResult().getDocuments()){
                                 Cart cart = doc.toObject(Cart.class);
+                                overAllTotalAmount += cart.getTotalPrice();
+                                overAllMount.setText(String.valueOf(overAllTotalAmount) + "Đ");
+                                Log.d("Cart", String.valueOf(overAllMount));
                                 mListCart.add(cart);
                                 cartAdapter.notifyDataSetChanged();
 
@@ -106,15 +105,15 @@ public class CartFragment extends Fragment {
         return root;
     }
 
-
-    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            long totalBill = intent.getLongExtra("totalAmount", 0);
-            overAllMount.setText(totalBill + "Đ");
-        }
-    };
+//
+//    public BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//
+//            long totalBill = intent.getLongExtra("totalAmount", 0);
+//            overAllMount.setText(totalBill + "Đ");
+//        }
+//    };
 
     @Override
     public void onDestroyView() {

@@ -1,14 +1,12 @@
 package com.example.fooddelivery.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fooddelivery.Model.Cart;
@@ -51,11 +49,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.totalQuantity.setText(mListCart.get(position).getTotalQuantity());
 
         //Total Amount pass to CartFragment
-        totalAmount = totalAmount + mListCart.get(position).getTotalPrice();
-        Intent intent = new Intent("MyTotalAmount");
-        intent.putExtra("totalAmount", totalAmount);
-
-        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+//        totalAmount = totalAmount + mListCart.get(position).getTotalPrice();
+//        Intent intent = new Intent("MyTotalAmount");
+//        intent.putExtra("totalAmount", totalAmount);
+//
+//        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     @Override

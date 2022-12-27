@@ -41,7 +41,7 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.add_address_btn:
+            case R.id.ad_add_address:
                 AddAddr();
                 break;
         }
@@ -55,27 +55,28 @@ public class AddAddressActivity extends AppCompatActivity implements View.OnClic
         String userCode = postalCode.getText().toString();
         String userPhone = phoneNumber.getText().toString();
 
-        String final_addres = "";
+        String final_addres = " ";
 
         if(!userName.isEmpty()){
-            final_addres+=userName;
+            final_addres += userName + " ";
         }
         if(!userAddres.isEmpty()){
-            final_addres+=userAddres; // nhấn được rồi mà chưa vào database
+            final_addres += userAddres + " " ; // nhấn được rồi mà chưa vào database
         }
         if(!userCity.isEmpty()){
-            final_addres+=userCity;
+            final_addres += userCity + " ";
         }
         if(!userCode.isEmpty()){
-            final_addres+=userCode;
+            final_addres += userCode + " ";
         }
         if(!userPhone.isEmpty()){
-            final_addres+=userPhone;
+            final_addres += userPhone + " ";
         }
 
         if(!userName.isEmpty() && !userAddres.isEmpty() && !userCity.isEmpty() && !userCode.isEmpty() && !userPhone.isEmpty()){
             Map<String, String> map = new HashMap<>();
             map.put("userAddress", final_addres);
+
 
             firestore.collection("CurrentUser").document(auth.getCurrentUser().getUid())
                                     .collection("Address").add(map).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
