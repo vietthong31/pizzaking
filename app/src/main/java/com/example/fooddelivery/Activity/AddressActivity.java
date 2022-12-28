@@ -2,9 +2,9 @@ package com.example.fooddelivery.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,13 +25,14 @@ import java.util.ArrayList;
 
 public class AddressActivity extends AppCompatActivity implements AddressAdapter.SelectedAddress {
 
+    public static String selectedAddress = "";
     Button addAddressBtn, paymentBtn;
     RecyclerView recyclerView;
-    private ArrayList<AddressModel> addressModelArrayList;
-    private AddressAdapter addressAdapter;
     FirebaseFirestore firestore;
     FirebaseAuth auth;
     String mAddress = "";
+    private ArrayList<AddressModel> addressModelArrayList;
+    private AddressAdapter addressAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         paymentBtn = findViewById(R.id.payment_btn);
         addAddressBtn = findViewById(R.id.add_address_btn);
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         addressModelArrayList = new ArrayList<>();
         addressAdapter = new AddressAdapter(getApplicationContext(), addressModelArrayList, this);
@@ -52,14 +54,13 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
 
         //Get data from FireStore
         firestore.collection("CurrentUser").document(auth.getCurrentUser().getUid())
-                        .collection("Address").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .collection("Address").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                        if(task.isSuccessful()){
-                            for (DocumentSnapshot doc : task.getResult().getDocuments()){
+                        if (task.isSuccessful()) {
+                            for (DocumentSnapshot doc : task.getResult().getDocuments()) {
                                 AddressModel addressModel = doc.toObject(AddressModel.class);
-                                Log.d("ADDRESS", addressModel.getUserAddress() == null ? "yes" : "no");
                                 addressModelArrayList.add(addressModel);
                                 addressAdapter.notifyDataSetChanged();
                             }
@@ -70,7 +71,11 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
         paymentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddressActivity.this, PaymentActivity.class));
+                if (selectedAddress.isEmpty()) {
+                    Toast.makeText(AddressActivity.this, "Chọn địa chỉ", Toast.LENGTH_SHORT).show();
+                } else {
+                    startActivity(new Intent(AddressActivity.this, PaymentActivity.class));
+                }
             }
         });
 

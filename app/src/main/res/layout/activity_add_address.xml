@@ -5,28 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".Activity.AddAddressActivity">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="24dp"
-        android:text="Create Address"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_address_toolbar" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="64dp"
-        android:layout_marginTop="40dp"
-        android:hint="Name"
+        android:layout_marginTop="32dp"
+        android:hint="Tên người nhận"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8">
+        app:layout_constraintTop_toBottomOf="@+id/add_address_toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ad_name"
@@ -42,7 +31,7 @@
         android:layout_width="300dp"
         android:layout_height="64dp"
         android:layout_marginTop="10dp"
-        android:hint="Address Lane"
+        android:hint="Địa chỉ"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +50,7 @@
         android:layout_width="300dp"
         android:layout_height="64dp"
         android:layout_marginTop="10dp"
-        android:hint="City"
+        android:hint="Thành phố"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +70,7 @@
         android:layout_width="300dp"
         android:layout_height="64dp"
         android:layout_marginTop="10dp"
-        android:hint="Postal Code"
+        android:hint="Mã bưu điện"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +88,7 @@
         android:layout_width="300dp"
         android:layout_height="64dp"
         android:layout_marginTop="10dp"
-        android:hint="Phone Number"
+        android:hint="Số điện thoại"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,8 +106,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:text="Add Address"
+        android:fontFamily="@font/inter"
+        android:text="Thêm"
         android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -128,12 +120,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#8FF7FD"
-        app:title="Add Address"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Thêm địa chỉ" />
 
 
 

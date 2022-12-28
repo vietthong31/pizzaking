@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fooddelivery.Activity.AddressActivity;
 import com.example.fooddelivery.Model.AddressModel;
 import com.example.fooddelivery.R;
 
@@ -59,6 +61,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
                 selectedRadioBtn = (RadioButton) view;
                 selectedRadioBtn.setChecked(true);
                 selectedAddress.setAddress(addressModels.get(position).getUserAddress());
+                AddressActivity.selectedAddress = addressModels.get(position).getUserAddress();
             }
         });
 
