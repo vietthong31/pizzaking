@@ -2,6 +2,7 @@ package com.example.fooddelivery.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -58,6 +59,7 @@ public class AddressActivity extends AppCompatActivity implements AddressAdapter
                         if(task.isSuccessful()){
                             for (DocumentSnapshot doc : task.getResult().getDocuments()){
                                 AddressModel addressModel = doc.toObject(AddressModel.class);
+                                Log.d("ADDRESS", addressModel.getUserAddress() == null ? "yes" : "no");
                                 addressModelArrayList.add(addressModel);
                                 addressAdapter.notifyDataSetChanged();
                             }

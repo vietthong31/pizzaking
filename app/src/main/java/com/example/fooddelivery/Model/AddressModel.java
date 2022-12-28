@@ -1,23 +1,22 @@
 package com.example.fooddelivery.Model;
 
 public class AddressModel {
-    String userAddess;
+    String userAddress;
     boolean isSelected;
 
     public AddressModel() {
     }
 
-    public AddressModel(String userAddess, boolean isSelected) {
-        this.userAddess = userAddess;
-        this.isSelected = isSelected;
+    public AddressModel(String userAddress) {
+        this.userAddress = userAddress;
     }
 
-    public String getUserAddess() {
-        return userAddess;
+    public String getUserAddress() {
+        return userAddress;
     }
 
-    public void setUserAddess(String userAddess) {
-        this.userAddess = userAddess;
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
     }
 
     public boolean isSelected() {

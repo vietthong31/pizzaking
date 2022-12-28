@@ -2,6 +2,7 @@ package com.example.fooddelivery.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,8 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull AddressAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        holder.address.setText(addressModels.get(position).getUserAddess());
+        //Log.d("ADDRESS", addressModels.get(position).getUserAddess());
+        holder.address.setText(addressModels.get(position).getUserAddress());
 
         //Click Radio Button
         holder.radioButton.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +58,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.ViewHold
                 }
                 selectedRadioBtn = (RadioButton) view;
                 selectedRadioBtn.setChecked(true);
-                selectedAddress.setAddress(addressModels.get(position).getUserAddess());
+                selectedAddress.setAddress(addressModels.get(position).getUserAddress());
             }
         });
 
