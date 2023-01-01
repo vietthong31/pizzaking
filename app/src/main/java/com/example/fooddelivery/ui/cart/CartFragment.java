@@ -75,7 +75,11 @@ public class CartFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful()){
                             for (DocumentSnapshot doc : task.getResult().getDocuments()){
+
+                                String documentId = doc.getId();
+
                                 Cart cart = doc.toObject(Cart.class);
+                                cart.setDocumentId(documentId);
                                 overAllTotalAmount += cart.getTotalPrice();
                                 overAllMount.setText(String.valueOf(overAllTotalAmount) + "Đ");
                                 Log.d("Cart", String.valueOf(overAllMount));

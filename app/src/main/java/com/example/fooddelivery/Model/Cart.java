@@ -7,8 +7,11 @@ public class Cart {
     Long Price;
     String TotalQuantity;
     Long TotalPrice;
+    String documentId;
 
     public Cart(){}
+
+
 
     public Cart(String CurrentDate, String CurrentTime, String FoodName, Long Price, String TotalQuantity, Long TotalPrice) {
         this.CurrentDate = CurrentDate;
@@ -17,6 +20,14 @@ public class Cart {
         this.Price = Price;
         this.TotalQuantity = TotalQuantity;
         this.TotalPrice = TotalPrice;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
     }
 
     public String getCurrentDate() {
